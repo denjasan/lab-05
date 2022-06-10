@@ -45,7 +45,7 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.github_token }}
-          parallel: true
+          #parallel: true
           path-to-lcov: ./_build/lcov.info
           coveralls-endpoint: https://coveralls.io
 
@@ -53,4 +53,4 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.github_token }}
-          parallel-finished: true
+          #parallel-finished: true
