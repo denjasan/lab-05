@@ -11,9 +11,6 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/banking)
 
 add_executable(RunTest ${CMAKE_CURRENT_SOURCE_DIR}/test.cpp)
 
-target_compile_options(RunTest PRIVATE --coverage)
-target_link_libraries(RunTest PRIVATE --coverage)
-
 if (COVERAGE)
     target_compile_options(RunTest PRIVATE --coverage)
     target_link_libraries(RunTest PRIVATE --coverage)
