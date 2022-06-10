@@ -18,27 +18,21 @@ jobs:
           run: |
             ls
             cd banking
-            cmake -H. -B_built
-            cmake --build _built
+            cmake -H. -B_build
+            cmake --build _build
           
   Testing:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       
-      - name: update
-        run:  |
-          git submodule update --init
-          sudo apt install lcov
-          sudo apt install g++-7
-      
       - name: test
         shell: bash
         run: |
-          mkdir _built && cd _built
+          mkdir _build && cd _build
           CXX=/usr/bin/g++-7 cmake -DCOVERAGE=1 ..
           cmake --build .
-          ./RunTest --enable-gcov
+          ./RunTest
           lcov -t "banking" -o lcov.info -c -d .
           
       - name: CovBeg
@@ -46,7 +40,7 @@ jobs:
         with:
           github-token: ${{ secrets.github_token }}
           parallel: true
-          path-to-lcov: ./_built/lcov.info
+          path-to-lcov: ./_build/lcov.info
           coveralls-endpoint: https://coveralls.io
 
       - name: CovFin
