@@ -18,8 +18,8 @@ jobs:
           run: |
             ls
             cd banking
-            cmake -H. -B_build
-            cmake --build _build
+            cmake -H. -B_built
+            cmake --build _built
           
   Testing:
     runs-on: ubuntu-latest
@@ -35,7 +35,7 @@ jobs:
       - name: test
         shell: bash
         run: |
-          mkdir _build && cd _build
+          mkdir _built && cd _built
           CXX=/usr/bin/g++-7 cmake -DCOVERAGE=1 ..
           cmake --build .
           ./RunTest --enable-gcov
@@ -46,7 +46,7 @@ jobs:
         with:
           github-token: ${{ secrets.github_token }}
           parallel: true
-          path-to-lcov: ./_build/lcov.info
+          path-to-lcov: ./_built/lcov.info
           coveralls-endpoint: https://coveralls.io
 
       - name: CovFin
