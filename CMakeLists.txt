@@ -7,7 +7,7 @@ project(TestRunning)
 
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/gtest" "gtest")
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/banking)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../banking)
 
 add_executable(RunTest ${CMAKE_CURRENT_SOURCE_DIR}/test.cpp)
 
