@@ -26,6 +26,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - name: update
+        run:  |
+          git submodule update --init
+          sudo apt install lcov
+          sudo apt install g++-7
+      
       - name: test
         shell: bash
         run: |
